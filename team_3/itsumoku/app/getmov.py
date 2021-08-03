@@ -140,7 +140,7 @@ def pt2sec(pt_time):
         raise ValueError(msg)
 
 
-def exec_getmov():
+def exec_getmov(during,keyword):
     # 利用するAPIサービス
     YOUTUBE_API_SERVICE_NAME = 'youtube'
     YOUTUBE_API_VERSION = 'v3'
@@ -157,4 +157,4 @@ def exec_getmov():
     return df_video_list
 
 if __name__=='__main__':
-    exec_getmov()
+    exec_getmov(during,keyword)
