@@ -1,0 +1,52 @@
+
+<meta charset="utf-8"/>
+<html><body>
+<script src="ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" href="#"><img src="images/logo_600x600.png" height="50px"></a>
+    
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="#">いつモク</a>
+        </li>
+        
+    </ul>
+    </div>
+</nav>
+<div class="container">
+    <form action="index.html" method="post">
+    <input type="time" name="time" value="00:30">時間
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadio" id="any" value="any" checked>
+        <label class="form-check-label" for="any">
+          誰でも
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadio" id="female"value="female" >
+        <label class="form-check-label" for="female">
+          女性
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadio" id="male" value="male" >
+        <label class="form-check-label" for="male">
+          男性
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadio" id="anime" value="anime" >
+        <label class="form-check-label" for="anime">
+          ２次元
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">送信</button>
+    </form>
+</div>
+
+</body>
+</html>
