@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 from itsumoku.app.getmov import exec_getmov
 
 
@@ -24,5 +25,6 @@ def index(request):
         return render(request, 'result.html', context)
 
     return render(request, 'index.html')
+
 
 
