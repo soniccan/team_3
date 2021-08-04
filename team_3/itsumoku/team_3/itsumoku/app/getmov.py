@@ -4,16 +4,19 @@ from datetime import datetime, timedelta,timezone
 import pandas as pd
 import re
 import numpy as np
-import sys
 
-def get_video_list_in_channel(youtube, channel_id,during,keyword,max_req_cnt=2):
+
+
+
+
+def get_video_list_in_channel(youtube, channel_id, max_req_cnt=2):
     '''特定チャンネルの動画情報一覧を取得し、必要な動画情報を返す
     
         公開時刻が新しい順に50ずつリクエスト
         デフォルトでは最大2リクエストで終了
     '''
 
-    n_requested = 20
+    n_requested = 50
 
     earliest_publishedtime =\
         datetime.now(tz=timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -22,14 +25,11 @@ def get_video_list_in_channel(youtube, channel_id,during,keyword,max_req_cnt=2):
     result = []
     while True:
         response = youtube.search().list(part='snippet',
-                                        #channelId=channel_id,
-                                        q= f'#もくもく会 {keyword}',
-                                      
+                                        channelId=channel_id,
+                                        order='date',
                                         type='video',
                                         publishedBefore=earliest_publishedtime,
                                         maxResults=n_requested).execute()
-
-        
         req_cnt += 1
         video_info = fetch_video_info(response)
         result.append(video_info)
@@ -149,17 +149,17 @@ def exec_getmov(during,keyword):
     YOUTUBE_API_VERSION = 'v3'
 
     # APIキー
-    YOUTUBE_API_KEY = 'AIzaSyBYj76jrN0soBvVm6GC1C42ilSIZQFmKUw'
+    YOUTUBE_API_KEY = 'AIzaSyAZ658Oh0c5JdBNO7SjW2BX3uD1bTS_4Mc'
 
     channel_id = 'UCd0pUnH7i5CM-Y8xRe7cZVg'
     # API のビルドと初期化
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
                 developerKey=YOUTUBE_API_KEY)   
-    df_video_list = get_video_list_in_channel(youtube, channel_id,during,keyword)
+    df_video_list = get_video_list_in_channel(youtube, channel_id)
     print(df_video_list)
     return df_video_list
 
-if __name__=='__main__':
-    during =30000
-    keyword ="男性"
-    exec_getmov(during,keyword)
+# if __name__=='__main__':
+#     during =300
+#     keyword ="美女"
+#     exec_getmov(during,keyword)

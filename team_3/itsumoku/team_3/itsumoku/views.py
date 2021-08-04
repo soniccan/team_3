@@ -10,5 +10,7 @@ def form(request):
 def result(request):
     # content =exec_getmov(request.POST['during'],request.POST['keyword'])
 
+
+
     return render(request,'result.html')
 
