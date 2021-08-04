@@ -6,14 +6,18 @@ import re
 import numpy as np
 import sys
 
+
 def get_video_list_in_channel(youtube, channel_id,during,keyword,max_req_cnt=2):
+
     '''特定チャンネルの動画情報一覧を取得し、必要な動画情報を返す
     
         公開時刻が新しい順に50ずつリクエスト
         デフォルトでは最大2リクエストで終了
     '''
 
+
     n_requested = 20
+
 
     earliest_publishedtime =\
         datetime.now(tz=timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -22,9 +26,7 @@ def get_video_list_in_channel(youtube, channel_id,during,keyword,max_req_cnt=2):
     result = []
     while True:
         response = youtube.search().list(part='snippet',
-                                        #channelId=channel_id,
                                         q= f'#もくもく会 {keyword}',
-                                      
                                         type='video',
                                         publishedBefore=earliest_publishedtime,
                                         maxResults=n_requested).execute()
@@ -151,11 +153,12 @@ def exec_getmov(during,keyword):
     # APIキー
     YOUTUBE_API_KEY = 'AIzaSyBYj76jrN0soBvVm6GC1C42ilSIZQFmKUw'
 
-    channel_id = 'UCd0pUnH7i5CM-Y8xRe7cZVg'
     # API のビルドと初期化
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
                 developerKey=YOUTUBE_API_KEY)   
+    
     df_video_list = get_video_list_in_channel(youtube, channel_id,during,keyword)
+
     print(df_video_list)
     return df_video_list
 
