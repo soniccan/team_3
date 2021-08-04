@@ -7,7 +7,7 @@ import numpy as np
 import sys
 
 
-def get_video_list_in_channel(youtube, channel_id,during,keyword,max_req_cnt=2):
+def get_video_list_in_channel(youtube,during,keyword,max_req_cnt=2):
 
     '''特定チャンネルの動画情報一覧を取得し、必要な動画情報を返す
     
@@ -157,7 +157,7 @@ def exec_getmov(during,keyword):
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
                 developerKey=YOUTUBE_API_KEY)   
     
-    df_video_list = get_video_list_in_channel(youtube, channel_id,during,keyword)
+    df_video_list = get_video_list_in_channel(youtube,during,keyword)
 
     print(df_video_list)
     return df_video_list
