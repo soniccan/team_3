@@ -7,7 +7,7 @@ import numpy as np
 import sys
 
 
-def get_video_list_in_channel(youtube,during,keyword,max_req_cnt=2):
+def get_video_list_in_channel(youtube,during:int,keyword,max_req_cnt=2):
 
     '''特定チャンネルの動画情報一覧を取得し、必要な動画情報を返す
     
@@ -24,9 +24,12 @@ def get_video_list_in_channel(youtube,during,keyword,max_req_cnt=2):
 
     req_cnt = 0
     result = []
+    channel_id = 'UCd0pUnH7i5CM-Y8xRe7cZVg'
     while True:
         response = youtube.search().list(part='snippet',
-                                        q= f'#もくもく会 {keyword}',
+                                        
+                                        order='date',
+                                        q= f'#もくもく会',
                                         type='video',
                                         publishedBefore=earliest_publishedtime,
                                         maxResults=n_requested).execute()
@@ -140,29 +143,44 @@ def pt2sec(pt_time):
         kwargs = {k: 0 if v is None else int(v[:-1])
                     for k, v in zip(keys, m.groups())}
         return timedelta(**kwargs).total_seconds()
-    else:
-        msg = '{} is not valid ISO time format.'.format(pt_time)
-        raise ValueError(msg)
-
-
-def exec_getmov(during,keyword):
+    # else:
+        # msg = '{} is not valid ISO time format.'.format(pt_time)
+        # raise ValueError(msg)
+def exec_getmov(during:int,keyword):
     # 利用するAPIサービス
     YOUTUBE_API_SERVICE_NAME = 'youtube'
     YOUTUBE_API_VERSION = 'v3'
 
+    if keyword =='female':
+        keyword='女性'
+    if keyword =='female':
+        keyword='女性'
+    if keyword =='female':
+        keyword='女性'
+
+
     # APIキー
-    YOUTUBE_API_KEY = 'AIzaSyBYj76jrN0soBvVm6GC1C42ilSIZQFmKUw'
+    YOUTUBE_API_KEY = 'AIzaSyAkxQjw68sCynRpbCsgi8nfaOYCwZcxDHQ'
 
     # API のビルドと初期化
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
                 developerKey=YOUTUBE_API_KEY)   
     
     df_video_list = get_video_list_in_channel(youtube,during,keyword)
+    videoids = df_video_list['videoId'].values
+    
+    df_video_details = get_contents_detail(youtube, videoids)
 
-    print(df_video_list)
-    return df_video_list
+    diff = 5
+    lower_duration = during - diff * 60  # 
+    upper_duration = during + diff*60 #誤差はdiff分以内。 
+    is_matched = df_video_details['duration'].between(lower_duration, upper_duration)
+    df_video_playlist = df_video_details.loc[is_matched, :]
+
+    print(df_video_playlist)
+    return df_video_playlist
 
 if __name__=='__main__':
-    during =30000
-    keyword ="男性"
+    during = 30*60
+    keyword ="male"
     exec_getmov(during,keyword)

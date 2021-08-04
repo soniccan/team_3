@@ -19,9 +19,9 @@
 <div class="container">
   <div class="row">
     <div class="col-mx-2 offset-5">
-      <form action="index" method="post">
+      <form action="result" method="post">
         {% csrf_token %}
-      <input type="time" name="during" value="00:30">時間
+      <input type="text" name="during" value="30">分
       <div class="form-check">
           <input class="form-check-input" type="radio" name="keyword" id="any" value="any" checked>
           <label class="form-check-label" for="any">
