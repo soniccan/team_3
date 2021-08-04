@@ -9,7 +9,7 @@ def result(request):
     if request.method == 'POST':
         
         during = request.POST['during']
-        during =int(during)
+        during =int(during)*60
         keyword = request.POST['keyword']
         
         context = {
