@@ -11,13 +11,7 @@ def index(request):
     if request.method == 'POST':
         
         during = request.POST['during']
-        any = request.POST['keyword']
-        male = request.POST['keyword']
-        woman = request.POST['keyword']
-        anime = request.POST['keyword']
-
-        keyword_list = [DEFAULT_KEYWORD, any, male, woman, anime ]
-        keyword = ' '.join(keyword_list)
+        keyword = request.POST['keyword']
 
         context = {
             'df_video_list':  exec_getmov(during, keyword)
