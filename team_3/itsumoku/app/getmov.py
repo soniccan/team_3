@@ -5,10 +5,6 @@ import pandas as pd
 import re
 import numpy as np
 
-
-
-
-
 def get_video_list_in_channel(youtube, channel_id, max_req_cnt=2):
     '''特定チャンネルの動画情報一覧を取得し、必要な動画情報を返す
     
