@@ -156,5 +156,7 @@ def exec_getmov(during,keyword):
     print(df_video_list)
     return df_video_list
 
-if __name__=='__main__':
-    exec_getmov(during,keyword)
+# if __name__=='__main__':
+#     during =300
+#     keyword ="美女"
+#     exec_getmov(during,keyword)
