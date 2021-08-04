@@ -13,39 +13,43 @@
         <li class="nav-item">
             <a class="nav-link" href="#">いつモク</a>
         </li>
-        
     </ul>
     </div>
 </nav>
 <div class="container">
-    <form action="index.html" method="post">
-    <input type="time" name="time" value="00:30">時間
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadio" id="any" value="any" checked>
-        <label class="form-check-label" for="any">
-          誰でも
-        </label>
-      </div>
+  <div class="row">
+    <div class="col-mx-2 offset-5">
+      <form action="index.html" method="post">
+        {% csrf_token %}
+      <input type="time" name="during" value="00:30">時間
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadio" id="female"value="female" >
-        <label class="form-check-label" for="female">
-          女性
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadio" id="male" value="male" >
-        <label class="form-check-label" for="male">
-          男性
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadio" id="anime" value="anime" >
-        <label class="form-check-label" for="anime">
-          ２次元
-        </label>
-      </div>
-      <button type="submit" class="btn btn-primary">送信</button>
-    </form>
+          <input class="form-check-input" type="radio" name="keyword" id="any" value="any" checked>
+          <label class="form-check-label" for="any">
+            誰でも
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="keyword" id="female"value="female" >
+          <label class="form-check-label" for="female">
+            女性
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="keyword" id="male" value="male" >
+          <label class="form-check-label" for="male">
+            男性
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="keyword id="anime" value="anime" >
+          <label class="form-check-label" for="anime">
+            ２次元
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">送信</button>
+      </form>
+    </div>
+  </div>
 </div>
 
 </body>
