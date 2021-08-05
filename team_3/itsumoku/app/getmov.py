@@ -163,7 +163,7 @@ def exec_getmov(during:int,keyword):
 
 
     # APIキー
-    YOUTUBE_API_KEY = 'AIzaSyAZ658Oh0c5JdBNO7SjW2BX3uD1bTS_4Mc'
+    YOUTUBE_API_KEY = 'AIzaSyDfeKIUYj9A_LPzUggppcIMEJzec-4VvJU'
 
     # API のビルドと初期化
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
@@ -180,7 +180,7 @@ def exec_getmov(during:int,keyword):
     is_matched = df_video_details['duration'].between(lower_duration, upper_duration)
     df_video_playlist = df_video_details.loc[is_matched, :]
 
-    df =df_video_playlist['id'].values
+    df ="https://www.youtube.com/embed/"+df_video_playlist['id'].values
     return df
 
 if __name__=='__main__':
