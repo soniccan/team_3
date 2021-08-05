@@ -29,7 +29,7 @@ def get_video_list_in_channel(youtube,during:int,keyword,max_req_cnt=2):
         response = youtube.search().list(part='snippet',
                                         
                                         order='date',
-                                        q= f'#もくもく会',
+                                        q= f'#もくもく会 {keyword}',
                                         type='video',
                                         publishedBefore=earliest_publishedtime,
                                         maxResults=n_requested).execute()
@@ -152,15 +152,18 @@ def exec_getmov(during:int,keyword):
     YOUTUBE_API_VERSION = 'v3'
 
     if keyword =='female':
-        keyword='女性'
-    if keyword =='female':
-        keyword='女性'
-    if keyword =='female':
-        keyword='女性'
+        keyword='女'
+    if keyword =='male':
+        keyword='男'
+    if keyword =='anime':
+        keyword='アニメ'
+    if keyword =='any':
+        keyword =''
+    
 
 
     # APIキー
-    YOUTUBE_API_KEY = 'AIzaSyAkxQjw68sCynRpbCsgi8nfaOYCwZcxDHQ'
+    YOUTUBE_API_KEY = 'AIzaSyAZ658Oh0c5JdBNO7SjW2BX3uD1bTS_4Mc'
 
     # API のビルドと初期化
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
@@ -171,7 +174,7 @@ def exec_getmov(during:int,keyword):
     
     df_video_details = get_contents_detail(youtube, videoids)
 
-    diff = 5
+    diff = 8
     lower_duration = during - diff * 60  # 
     upper_duration = during + diff*60 #誤差はdiff分以内。 
     is_matched = df_video_details['duration'].between(lower_duration, upper_duration)
