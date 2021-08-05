@@ -7,7 +7,7 @@ import numpy as np
 import sys
 
 
-def get_video_list_in_channel(youtube,during:int,keyword,max_req_cnt=2):
+def get_video_list_in_channel(youtube,during:int,keyword,max_req_cnt=4):
 
     '''特定チャンネルの動画情報一覧を取得し、必要な動画情報を返す
     
@@ -16,7 +16,16 @@ def get_video_list_in_channel(youtube,during:int,keyword,max_req_cnt=2):
     '''
 
 
-    n_requested = 20
+    n_requested = 50
+    
+    if keyword =='male':
+        keyword='男'
+    if keyword =='female':
+        keyword ='女'
+    if keyword =='any':
+        keyword =''
+    if keyword =='anime':
+        keyword ='vtuber'
 
 
     earliest_publishedtime =\
@@ -29,8 +38,9 @@ def get_video_list_in_channel(youtube,during:int,keyword,max_req_cnt=2):
         response = youtube.search().list(part='snippet',
                                         
                                         order='date',
-                                        q= f'#もくもく会 {keyword}',
+                                        q= f'#もくもく会 |{keyword}の子',
                                         type='video',
+                                        videoEmbeddable ='true',
                                         publishedBefore=earliest_publishedtime,
                                         maxResults=n_requested).execute()
 
@@ -151,19 +161,11 @@ def exec_getmov(during:int,keyword):
     YOUTUBE_API_SERVICE_NAME = 'youtube'
     YOUTUBE_API_VERSION = 'v3'
 
-    if keyword =='female':
-        keyword='女'
-    if keyword =='male':
-        keyword='男'
-    if keyword =='anime':
-        keyword='アニメ'
-    if keyword =='any':
-        keyword =''
     
 
 
     # APIキー
-    YOUTUBE_API_KEY = 'AIzaSyDfeKIUYj9A_LPzUggppcIMEJzec-4VvJU'
+    YOUTUBE_API_KEY = 'AIzaSyAC1JajcTBCkAiYLWgimuUvFIgDa947M5E'
 
     # API のビルドと初期化
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
