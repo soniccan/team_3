@@ -180,8 +180,8 @@ def exec_getmov(during:int,keyword):
     is_matched = df_video_details['duration'].between(lower_duration, upper_duration)
     df_video_playlist = df_video_details.loc[is_matched, :]
 
-    print(df_video_playlist)
-    return df_video_playlist
+    df =df_video_playlist['id'].values
+    return df
 
 if __name__=='__main__':
     during = 30*60
