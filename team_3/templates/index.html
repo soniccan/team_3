@@ -18,6 +18,14 @@
 </nav>
 <div class="container">
   <div class="row">
+    <div class="col-mx-2 offset-5 d-inline">
+      <p>
+      時間と属性を指定して<br>
+      検索ボタンを押すと<br>
+      もくもく会の動画を<br>
+      検索できます<br>
+    </p>
+    </div>
     <div class="col-mx-2 offset-5">
       <form action="result" method="post">
         {% csrf_token %}
@@ -46,7 +54,7 @@
             ２次元
           </label>
         </div>
-        <button type="submit" class="btn btn-primary">送信</button>
+        <button type="submit" class="btn btn-primary">検索</button>
       </form>
     </div>
   </div>
