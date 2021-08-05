@@ -18,35 +18,18 @@
     </div>
 </nav>
 <div class="container">
-    <div class="container">
-        <div class="row">
-            <div class="embed-responsive embed-responsive-16by9 my-3">
-                <iframe class="embed-responsive-item" 
-                src="https://www.youtube.com/embed/58Hj4BsMIQs"
-                allowfullscreen>
-                </iframe>
-            </div>
-            <div class="embed-responsive embed-responsive-16by9 my-3">
-                <iframe class="embed-responsive-item" 
-                src="https://www.youtube.com/embed/58Hj4BsMIQs"
-                allowfullscreen>
-                </iframe>
-            </div>
-            <div class="embed-responsive embed-responsive-16by9 my-3">
-                <iframe class="embed-responsive-item" 
-                src="https://www.youtube.com/embed/58Hj4BsMIQs"
-                allowfullscreen>
-                </iframe>
-            </div>
-            <div class="embed-responsive embed-responsive-16by9 my-3">
-                <iframe class="embed-responsive-item" 
-                src="https://www.youtube.com/embed/58Hj4BsMIQs"
-                allowfullscreen>
-                </iframe>
-            </div>
-            
-        </div>
-    </div>
+  <div class="row"> 
+    {% for video_url in df_video_list %}
+     <div class="embed-responsive embed-responsive-16by9 my-3">
+          <iframe class="embed-responsive-item" 
+          src="{{ video_url }}"
+          allowfullscreen>
+          </iframe>
+     </div>
+    {% endfor %}
+  </div>
+
+
 </div>
 
 </body>
