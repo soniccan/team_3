@@ -18,12 +18,17 @@
     </div>
 </nav>
 <div class="container">
+  <div class="row"> 
     {% for video_url in df_video_list %}
-    <iframe width="560" height="315"
-    src="{{ video_url }}"
-    frameborder="0" allowfullscreen>
-    </iframe>
+     <div class="embed-responsive embed-responsive-16by9 my-3">
+          <iframe class="embed-responsive-item" 
+          src="{{ video_url }}"
+          allowfullscreen>
+          </iframe>
+     </div>
     {% endfor %}
+  </div>
+
 
 </div>
 
