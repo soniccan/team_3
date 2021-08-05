@@ -160,7 +160,7 @@ def exec_getmov(during:int,keyword):
 
 
     # APIキー
-    YOUTUBE_API_KEY = 'AIzaSyAkxQjw68sCynRpbCsgi8nfaOYCwZcxDHQ'
+    YOUTUBE_API_KEY = 'AIzaSyDfeKIUYj9A_LPzUggppcIMEJzec-4VvJU'
 
     # API のビルドと初期化
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
